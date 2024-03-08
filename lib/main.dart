@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/state/app_state.dart';
+import 'package:flutter_template/state/ui/ui_common.dart';
 import 'package:provider/provider.dart';
 
 import 'widget/home_page.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => AppState(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AppState()),
+        Provider(create: (context) => UiCommon(context: context)),
+      ],
       child: const MyApp(),
     ),
   );

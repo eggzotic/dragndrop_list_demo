@@ -8,15 +8,17 @@ import '../model/failure.dart';
 /// ChangeNotifierProvider
 class AppState extends ChangeNotifier {
   /// Increment this accordingly with each new commit/build/release
-  /// compare it with the in-DB value to determine whether the user ought to 
+  /// compare it with the in-DB value to determine whether the user ought to
   /// update
-  final version = Version(0, 0, 1);
+  final version = Version(0, 0, 2);
 
   /// replace this with actual, meaningful state...
   int _value = 0;
   int get value => _value;
   void increment() {
     _value += 1;
+    // insert a Failure, to demonstrate how they can be communicated
+    if (_value % 10 == 0) _failure = Failure("Multiple of 10 reached!");
   }
 
   //
