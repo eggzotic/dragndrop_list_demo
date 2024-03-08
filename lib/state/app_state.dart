@@ -10,7 +10,7 @@ class AppState extends ChangeNotifier {
   /// Increment this accordingly with each new commit/build/release
   /// compare it with the in-DB value to determine whether the user ought to
   /// update
-  final version = Version(0, 0, 4);
+  final version = Version(0, 0, 5);
 
   /// replace this with actual, meaningful state...
   int _value = 0;
@@ -30,7 +30,7 @@ class AppState extends ChangeNotifier {
     _failure = null;
   }
 
-  /// Call this from the action section of UI control, with a subclass of Event
+  /// Call this from the action section of a UI control, with a subclass of Event
   Future<void> sendEvent(Event event, {bool notify = true}) async {
     try {
       await event.process(this);

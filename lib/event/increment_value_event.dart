@@ -1,5 +1,4 @@
-import 'package:flutter_template/state/app_state.dart';
-
+import '../state/app_state.dart';
 import 'event.dart';
 
 class IncrementValueEvent extends Event {

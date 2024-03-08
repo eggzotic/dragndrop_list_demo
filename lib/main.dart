@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_template/state/app_state.dart';
-import 'package:flutter_template/state/ui/ui_common.dart';
 import 'package:provider/provider.dart';
 
+import 'state/app_state.dart';
+import 'state/ui/ui_common.dart';
 import 'widget/home_page.dart';
 
 void main() {

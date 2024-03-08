@@ -1,5 +1,6 @@
-import 'package:flutter_template/event/event.dart';
-import 'package:flutter_template/state/app_state.dart';
+
+import '../state/app_state.dart';
+import 'event.dart';
 
 class ClearFailureEvent extends Event {
   @override
