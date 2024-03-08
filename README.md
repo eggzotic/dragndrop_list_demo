@@ -11,7 +11,7 @@ All platform subfolders have been removed, except for `web`.
 
 ## Getting Started
 
-Clone this repo as an alternative to using `flutter create`. Then rename the folder to your intended new project name. Then
+Clone this repo as an alternative to using `flutter create`:
 
 ```
 git clone git@github.com:eggzotic/flutter_template.git my_new_project
