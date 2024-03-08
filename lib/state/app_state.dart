@@ -10,7 +10,7 @@ class AppState extends ChangeNotifier {
   /// Increment this accordingly with each new commit/build/release
   /// compare it with the in-DB value to determine whether the user ought to
   /// update
-  final version = Version(0, 0, 2);
+  final version = Version(0, 0, 3);
 
   /// replace this with actual, meaningful state...
   int _value = 0;
