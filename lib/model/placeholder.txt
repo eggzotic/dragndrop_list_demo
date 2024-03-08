@@ -1,0 +1,1 @@
+Just to make it clear that the model folder is where data-model classes live :-)
