@@ -7,7 +7,7 @@ class MoveItemEvent extends Event {
   MoveItemEvent({required this.from, required this.to});
 
   @override
-  void processSync(AppState appState)  {
-    appState.move(from: from, to: to);
+  void processSync(AppState appState) {
+    appState.moveItem(from: from, to: to);
   }
 }

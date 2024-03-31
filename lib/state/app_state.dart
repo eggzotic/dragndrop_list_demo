@@ -54,16 +54,22 @@ class AppState extends ChangeNotifier {
   }
 
   /// Local state for this re-orderable-list demo
-  final items = <Item>[];
-  final int itemCount;
+  final _items = <Item>[];
+  List<Item> get items => [..._items];
+  int get itemCount => _items.length;
+
+  void removeItem({required int withIndex}) {
+    _items.removeWhere((i) => i.index == withIndex);
+    debugPrint("removeItem items now: $_items");
+  }
 
   final notifyAfter = 5;
   int _moveCount = 0;
   int get moveCount => _moveCount;
 
-  AppState({required this.itemCount}) {
+  AppState({required int itemCount}) {
     for (int i = 0; i < itemCount; i++) {
-      items.add(
+      _items.add(
         Item(
           index: i,
           name: "Item number $i",
@@ -74,14 +80,14 @@ class AppState extends ChangeNotifier {
   }
 
   /// Move an element to another position
-  void move({required int from, required int to}) {
+  void moveItem({required int from, required int to}) {
     // this reduces the indexes of all items after that location
-    final item = items.removeAt(from);
+    final item = _items.removeAt(from);
     if (to > from) to--;
-    debugPrint("$runtimeType from = $from, to = $to");
-    items.insert(to, item);
+    debugPrint("moveItem from = $from, to = $to");
+    _items.insert(to, item);
     _moveCount++;
-    debugPrint("$runtimeType items now: $items");
+    debugPrint("moveItem items now: $_items");
     if (_moveCount % notifyAfter == 0) {
       _notice = "$_moveCount moves completed!";
     }

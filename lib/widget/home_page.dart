@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/event/clear_notice_event.dart';
 import 'package:flutter_template/event/move_item_event.dart';
+import 'package:flutter_template/widget/item_card.dart';
 import 'package:flutter_template/widget/my_popup.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../event/clear_failure_event.dart';
@@ -76,22 +76,20 @@ class HomePage extends StatelessWidget {
           // Use this to assist with setting thresholds for layout changes
           debugPrint("$runtimeType width = ${constraints.maxWidth}");
           return ReorderableListView.builder(
+            // to do custom drag-handle, set to false, and add an explicit
+            //  ReorderableDragStartListener somewhere in the itemBuilder (e.g.
+            //  the trailing of a ListTile)
             buildDefaultDragHandles: false,
             itemBuilder: (context, index) {
               final item = appState.items[index];
-              return Card(
+              return ItemCard(
+                item: item,
+                position: index,
                 key: ValueKey("item ${item.index}"),
-                child: ListTile(
-                  title: Text(item.name),
-                  subtitle: Text(item.description),
-                  trailing: ReorderableDragStartListener(
-                    index: index,
-                    child: const FaIcon(FontAwesomeIcons.hand),
-                  ),
-                ),
               );
             },
             itemCount: appState.itemCount,
+            // needs to be synchronous, to ensure smooth animation of the move
             onReorder: (before, after) =>
                 appState.sendEventSync(MoveItemEvent(from: before, to: after)),
           );
